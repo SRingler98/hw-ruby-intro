@@ -78,15 +78,56 @@ end
 # Part 2
 
 def hello(name)
-  # YOUR CODE HERE
+  output = "Hello, "
+  output << name
+  return output
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+  if s.length == 0
+    then
+    return false
+  end
+
+  cons = "bcdfghjklmnpqrstvwxyz".split('')
+
+  char = s[0].capitalize
+  for item in cons
+    if item.capitalize == char
+      then
+      return true
+    end
+  end
+  return false
 end
 
-def binary_multiple_of_4? s
-  # YOUR CODE HERE
+def binary_multiple_of_4? s  
+  number = 0
+  length = s.length
+  
+  if length == 0
+    then
+    return false
+  end
+  
+  count = 0
+
+  lang = s.split('')
+
+  for char in lang
+    if char != "0" && char != "1"
+      then
+      return false
+    end
+
+    if char == "1"
+      then
+      number = number + (2**(length-count-1))
+    end
+    count = count + 1
+  end
+
+  return (number % 4 == 0)
 end
 
 # Part 3
