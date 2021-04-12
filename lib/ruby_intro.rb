@@ -133,5 +133,49 @@ end
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+
+  def initialize(isbn, price)
+
+    raise ArgumentError.new(
+      "Expected a string for first argument, got #{isbn} instead"
+    ) if !isbn.instance_of?(String)
+
+    raise ArgumentError.new(
+      "Expected a non-empty int for second argument"
+    ) if price == 0
+
+    raise ArgumentError.new(
+      "Expected a non-empty string for first argument"
+    ) if isbn == ""
+
+    raise ArgumentError.new(
+      "Expected a non-negative value for second argument, got #{price} instead"
+    ) if price < 0
+
+    @book_isbn = isbn
+    @book_price = price
+  end
+
+  # isbn getter
+  def isbn
+    @book_isbn
+  end
+
+  # isbn setter
+  def isbn=(value)
+    @book_isbn = value
+  end
+
+  def price
+    @book_price
+  end
+
+  def price=(value)
+    @book_price = value
+  end
+
+  def price_as_string
+    return "$#{'%.2f' % @book_price}"
+  end
+
 end
